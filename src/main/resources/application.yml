@@ -9,7 +9,20 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
-        spring.json.value.default.type: com.example.notification_processor_service.model.NotificationEvent
+        spring.json.value.default.type: "com.example.notification_processor_service.model.NotificationEvent"
+  datasource:
+    url: jdbc:postgresql://localhost:5438/notifications
+    username: root
+    password: pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
 
 server:
   port: 8088
+
+jwt:
+  secret: secretkeyPasswordForAuth12312312312313213123123sdfsdf
