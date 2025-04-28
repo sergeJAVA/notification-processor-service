@@ -11,4 +11,5 @@ public interface NotificationService {
     List<Notification> sendNotificationsByUserId(String userId);
 
     Notification getNotificationById(String notificationId);
+    void deleteById(String notificationId);
 }

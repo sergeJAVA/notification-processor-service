@@ -47,5 +47,10 @@ public class NotificationServiceImpl implements NotificationService{
         return notificationRepository.findById(notificationId).orElse(null);
     }
 
+    @Override
+    public void deleteById(String notificationId) {
+        notificationRepository.deleteById(notificationId);
+    }
+
 
 }

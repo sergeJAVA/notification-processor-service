@@ -5,17 +5,14 @@ import com.example.notification_processor_service.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/notification-processor")
-public class Controller {
+public class ProcessorController {
     private final NotificationService notificationService;
 
     @GetMapping("/userId/{userId}")
@@ -30,5 +27,11 @@ public class Controller {
             return ResponseEntity.ok(notification);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+
+    @DeleteMapping("/delete/{notificationId}")
+    public ResponseEntity<String> deleteNotification(@PathVariable String notificationId) {
+        notificationService.deleteById(notificationId);
+        return ResponseEntity.ok("Notification with "+ notificationId + " has deleted");
     }
 }
